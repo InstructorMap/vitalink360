@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e46"><meta name="description" content="VITALINK 360, asistencia conectada"><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./styles.css"><title>VITALINK 360 | Tu asistencia, más cerca</title></head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><span class="mark" aria-hidden="true">✚</span><div><strong>VITALINK <em>360</em></strong><small>Tu asistencia, más cerca</small></div></div><span class="demo">MODO DEMO</span></header>
+<main id="main">
+<section class="welcome"><p class="eyebrow">ASISTENCIA MÉDICA 24/7</p><h1>Estamos para cuidarte.</h1><p>Pedí ayuda de forma simple, cuando la necesites.</p></section>
+<section class="sos-card" aria-label="Solicitar emergencia"><div class="sos-ring"><button id="sos" class="sos" aria-label="Solicitar ayuda, modo demostración"><span class="sos-symbol">✚</span><strong>SOS</strong><small>NECESITO AYUDA</small></button></div><p>Presioná el botón para pedir asistencia</p><span class="sos-note">Versión de prueba · No activa emergencias reales</span></section>
+<section class="quick"><button class="service" data-action="domicilio"><span class="emoji">🏠</span><span><strong>Médico a domicilio</strong><small>Solicitá una visita médica</small></span><span class="arrow">›</span></button><button class="service" data-action="central"><span class="emoji">📞</span><span><strong>Llamar a la central</strong><small>Comunicate con un operador</small></span><span class="arrow">›</span></button></section>
+<section class="section"><div class="section-head"><h2>Nuestros servicios</h2><span>Siempre cerca</span></div><div class="tiles"><button data-action="urgencias"><span>🚑</span><strong>Urgencias y emergencias</strong></button><button data-action="areas"><span>🏢</span><strong>Áreas protegidas</strong></button><button data-action="eventos"><span>🎪</span><strong>Cobertura de eventos</strong></button><button data-action="capacitacion"><span>🎓</span><strong>Capacitaciones</strong></button></div></section>
+</main>
+<nav class="bottom" aria-label="Navegación"><button class="active" data-tab="inicio"><span>⌂</span>Inicio</button><button data-tab="credencial"><span>▣</span>Credencial</button><button data-tab="servicios"><span>☷</span>Servicios</button><button data-tab="central"><span>▤</span>Central demo</button></nav>
+</div>
+<dialog id="modal"><div class="modal-head"><span id="modal-icon">✚</span><button id="close" aria-label="Cerrar">×</button></div><h2 id="modal-title"></h2><p id="modal-text"></p><div id="modal-extra"></div><button class="primary" id="modal-ok">Entendido</button></dialog>
+<script src="./app.js" defer></script></body></html>
