@@ -1,2 +1,2 @@
-/* Configure only with a dedicated VITALINK staging Supabase project. Public anon key is NOT a secret; RLS is mandatory. */
-window.VitalinkAuthConfig=Object.freeze({url:'',anonKey:'',mode:'disabled'});
+/* Public Supabase publishable key only. Authorization enforced by vitalink_memberships RLS. */
+window.VitalinkAuthConfig=Object.freeze({url:'https://ebrukqxnhfpatoeukaqc.supabase.co',anonKey:'sb_publishable_IdFKiHLDz38pEroZPPQLdA_zT55odsi',mode:'staging'});
