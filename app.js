@@ -1,7 +1,7 @@
 const main=document.querySelector('#main'),modal=document.querySelector('#modal');
 const initial=main.innerHTML;
 const content={
-domicilio:['🏠','Médico a domicilio','La solicitud de atención domiciliaria estará disponible cuando conectemos la central operativa.'],
+domicilio:['🏠','Médico a domicilio','Podés registrar una consulta no urgente en el portal autenticado. No se despachan ambulancias desde esta versión.'],
 central:['📞','Contactar a la central','El teléfono de la central aún no está configurado. Ante una emergencia real, usá el número habitual de tu prestador.'],
 urgencias:['🚑','Urgencias y emergencias','Asistencia prehospitalaria y ambulancias las 24 horas, según la cobertura contratada.'],
 areas:['🏢','Áreas protegidas','Cobertura sanitaria para empresas, comercios e instituciones.'],
@@ -28,6 +28,6 @@ if(e.target.closest('#large-text')){document.body.classList.toggle('large-text')
 if(e.target.closest('#high-contrast')){document.body.classList.toggle('high-contrast');return}
 if(e.target.closest('#reset-access')){document.body.classList.remove('large-text','high-contrast');return}
 if(e.target.closest('#ask-location')){const result=document.querySelector('#location-result');if(!navigator.geolocation){result.textContent='Tu navegador no permite consultar la ubicación.';return}result.textContent='Consultando ubicación…';navigator.geolocation.getCurrentPosition(p=>{result.textContent='Ubicación obtenida (solo en tu dispositivo). Precisión aproximada: '+Math.round(p.coords.accuracy)+' metros. No fue enviada a la central.'},()=>{result.textContent='No se pudo obtener la ubicación. Revisá los permisos del navegador.'},{enableHighAccuracy:true,timeout:12000,maximumAge:0});return}
-const action=e.target.closest('[data-action]');if(action){const key=action.dataset.action;if(key==='ubicacion')locationCheck();else if(key==='accesibilidad')accessibility();else{const [icon,title,message]=content[key];show(icon,title,message)}return}
+const action=e.target.closest('[data-action]');if(action){const key=action.dataset.action;if(key==='ubicacion')locationCheck();else if(key==='accesibilidad')accessibility();else{const [icon,title,message]=content[key];show(icon,title,message,key==='domicilio'?'<p><a href="./portal.html">Abrir portal de consultas no urgentes</a></p>':'')}return}
 const tab=e.target.closest('[data-tab]');if(tab)selectTab(tab.dataset.tab)
 });
