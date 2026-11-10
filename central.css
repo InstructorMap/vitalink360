@@ -59,3 +59,5 @@ main{max-width:1360px}
 .command-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:25px 4px;color:#92b0c0;font-size:11px}.command-footer>div{display:flex;flex-direction:column;gap:6px}.command-footer strong{font-size:14px;color:#b9eae5}.operations-banner img{height:220px}.operations-banner figcaption{font-size:13px;letter-spacing:.3px}
 @media(max-width:900px){.panels{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.command-toolbar{padding:14px}.command-clock{font-size:19px}.operations-section-title{align-items:start;flex-direction:column}.steps{grid-template-columns:1fr}.command-footer{align-items:start;flex-direction:column}.operations-banner img{height:180px}.metrics article{min-height:140px}.metrics{gap:9px}}
+
+.central-nav{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.central-nav a{font-size:12px}@media(max-width:600px){header{align-items:flex-start;flex-direction:column}.central-nav{width:100%}}
