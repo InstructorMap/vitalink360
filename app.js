@@ -2,23 +2,31 @@ const main=document.querySelector('#main'),modal=document.querySelector('#modal'
 const initial=main.innerHTML;
 const content={
 domicilio:['🏠','Médico a domicilio','La solicitud de atención domiciliaria estará disponible cuando conectemos la central operativa.'],
-central:['📞','Llamar a la central','El número telefónico todavía no está configurado. En una emergencia real, utilizá el número habitual de tu prestador.'],
-urgencias:['🚑','Urgencias y emergencias','Asistencia prehospitalaria y ambulancias las 24 horas, sujeta a la cobertura contratada.'],
-areas:['🏢','Áreas protegidas','Cobertura para comercios, empresas e instituciones.'],
+central:['📞','Contactar a la central','El teléfono de la central aún no está configurado. Ante una emergencia real, usá el número habitual de tu prestador.'],
+urgencias:['🚑','Urgencias y emergencias','Asistencia prehospitalaria y ambulancias las 24 horas, según la cobertura contratada.'],
+areas:['🏢','Áreas protegidas','Cobertura sanitaria para empresas, comercios e instituciones.'],
 eventos:['🎪','Cobertura de eventos','Dispositivos sanitarios y ambulancias para eventos.'],
-capacitacion:['🎓','Capacitaciones','Formación en RCP, primeros auxilios y respuesta a emergencias.']
+capacitacion:['🎓','Capacitaciones','Cursos de primeros auxilios, RCP y respuesta a emergencias.']
 };
 function show(icon,title,message,extra=''){document.querySelector('#modal-icon').textContent=icon;document.querySelector('#modal-title').textContent=title;document.querySelector('#modal-text').textContent=message;document.querySelector('#modal-extra').innerHTML=extra;modal.showModal()}
-document.querySelector('#close').onclick=()=>modal.close();
-document.querySelector('#modal-ok').onclick=()=>modal.close();
+function close(){modal.close()}
+document.querySelector('#close').onclick=close;
+document.querySelector('#modal-ok').onclick=close;
+function selectTab(tab){document.querySelectorAll('[data-tab]').forEach(b=>{const active=b.dataset.tab===tab;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+if(tab==='inicio')main.innerHTML=initial;
+if(tab==='credencial')main.innerHTML='<section class="page"><p class="eyebrow">IDENTIFICACIÓN DIGITAL</p><h1>Mi credencial</h1><p>Próximamente vas a poder consultar tu credencial de socio.</p><div class="digital-card"><span>✚ VITALINK 360</span><strong>SOCIO DE DEMOSTRACIÓN</strong><span>Sin registrar</span><small>NO ACREDITA COBERTURA</small></div><p>Para proteger tus datos, el registro y la validación de cobertura se habilitarán al conectar el sistema seguro.</p></section>';
+if(tab==='servicios')main.innerHTML='<section class="page"><p class="eyebrow">COBERTURAS Y PRESTACIONES</p><h1>Nuestros servicios</h1><p>Seleccioná un servicio para conocerlo.</p>'+Object.entries(content).filter(([key])=>key!=='central').map(([key,[icon,title]])=>'<button class="service" data-action="'+key+'"><span class="emoji" aria-hidden="true">'+icon+'</span><span><strong>'+title+'</strong><small>Más información</small></span><span class="arrow" aria-hidden="true">›</span></button>').join('')+'</section>';
+if(tab==='perfil')main.innerHTML='<section class="page"><p class="eyebrow">MI ESPACIO</p><h1>Mi perfil</h1><p>Estamos preparando una experiencia sencilla y segura para socios y familiares.</p><div class="info-card"><strong>Estado de cuenta</strong>Sin sesión iniciada<strong>Familiares vinculados</strong>No configurados<strong>Historial de solicitudes</strong>Sin conexión con la central</div><button class="service" data-action="ubicacion"><span class="emoji">📍</span><span><strong>Consultar ubicación</strong><small>Solo con tu autorización</small></span></button><button class="service" data-action="accesibilidad"><span class="emoji">Aa</span><span><strong>Accesibilidad</strong><small>Texto grande y contraste alto</small></span></button></section>';
+main.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'})}
+function accessibility(){show('Aa','Lectura fácil','Elegí cómo querés ver la aplicación. Las preferencias se aplican solo a esta sesión.','<div class="settings"><button id="large-text" class="setting-btn" type="button">Aumentar tamaño de letra</button><button id="high-contrast" class="setting-btn" type="button">Activar o desactivar alto contraste</button><button id="reset-access" class="setting-btn" type="button">Restablecer apariencia</button></div>')}
+function locationCheck(){show('📍','Consultar mi ubicación','Solo se solicitará tu ubicación si tocás el botón de abajo. No se envía ni guarda en ningún servidor.','<button class="setting-btn" id="ask-location" type="button">Permitir ubicación en este momento</button><p id="location-result" aria-live="polite"></p>')}
+document.querySelector('#accessibility').onclick=accessibility;
 document.addEventListener('click',e=>{
-const sos=e.target.closest('#sos');if(sos){show('🆘','Modo demostración','Esta versión NO envía alertas a ninguna central. Ante una emergencia real, llamá al número habitual del servicio.','<p class="warning">No se ha solicitado ninguna ambulancia.</p>');return}
-const action=e.target.closest('[data-action]');if(action){const [icon,title,message]=content[action.dataset.action];show(icon,title,message)}
-const tab=e.target.closest('[data-tab]');if(!tab)return;
-document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b===tab));
-const page=tab.dataset.tab;
-if(page==='inicio'){main.innerHTML=initial;return}
-if(page==='credencial'){main.innerHTML='<section class="page"><h1>Mi credencial</h1><p>Tu identificación de socio estará disponible cuando se habilite el registro seguro.</p><div class="info-card"><strong>VITALINK 360</strong>Credencial de demostración<br>Socio: sin registrar<br>Estado: no verificado</div><p>No presenta cobertura válida ni autoriza prestaciones.</p></section>';return}
-if(page==='servicios'){main.innerHTML='<section class="page"><h1>Nuestros servicios</h1><p>Conocé las opciones de asistencia y cobertura.</p>'+Object.entries(content).map(([key,[icon,title]])=>'<button class="service" data-action="'+key+'"><span class="emoji">'+icon+'</span><span><strong>'+title+'</strong><small>Ver información</small></span><span class="arrow">›</span></button>').join('')+'</section>';return}
-if(page==='central'){main.innerHTML='<section class="page"><p class="eyebrow">PANEL OPERATIVO · DEMOSTRACIÓN</p><h1>Central de emergencias</h1><p>Vista preliminar del futuro panel de despacho. No recibe solicitudes reales.</p><div class="demo-map">🗺️<br>Mapa de operaciones<br>Próximamente</div><div class="info-card"><strong>Solicitudes conectadas</strong>0 · Sin backend configurado<strong>Ambulancias conectadas</strong>0 · Sin unidades vinculadas</div><p class="warning">La central no está operativa.</p></section>'}
+if(e.target.closest('#sos')){show('🆘','Simulación de emergencia','Esta versión NO envía alertas a una central ni solicita ambulancias. Para una emergencia real, llamá al teléfono habitual de tu prestador.','<p class="warning">No se generó ninguna solicitud de asistencia.</p>');return}
+if(e.target.closest('#large-text')){document.body.classList.toggle('large-text');return}
+if(e.target.closest('#high-contrast')){document.body.classList.toggle('high-contrast');return}
+if(e.target.closest('#reset-access')){document.body.classList.remove('large-text','high-contrast');return}
+if(e.target.closest('#ask-location')){const result=document.querySelector('#location-result');if(!navigator.geolocation){result.textContent='Tu navegador no permite consultar la ubicación.';return}result.textContent='Consultando ubicación…';navigator.geolocation.getCurrentPosition(p=>{result.textContent='Ubicación obtenida (solo en tu dispositivo). Precisión aproximada: '+Math.round(p.coords.accuracy)+' metros. No fue enviada a la central.'},()=>{result.textContent='No se pudo obtener la ubicación. Revisá los permisos del navegador.'},{enableHighAccuracy:true,timeout:12000,maximumAge:0});return}
+const action=e.target.closest('[data-action]');if(action){const key=action.dataset.action;if(key==='ubicacion')locationCheck();else if(key==='accesibilidad')accessibility();else{const [icon,title,message]=content[key];show(icon,title,message)}return}
+const tab=e.target.closest('[data-tab]');if(tab)selectTab(tab.dataset.tab)
 });
