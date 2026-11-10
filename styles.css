@@ -15,3 +15,36 @@
 .large-text{font-size:120%}.large-text .welcome p,.large-text .service small,.large-text .page p,.large-text .sos-card>p{font-size:1.15em}.large-text .service strong,.large-text .tiles strong{font-size:1.16em}.large-text .bottom button{font-size:13px}
 .high-contrast .app{background:#fff}.high-contrast .top{background:#000}.high-contrast .service,.high-contrast .tiles button{border:2px solid #000}.high-contrast .sos{background:#b60000}.high-contrast .sos-note{color:#6b0000}.high-contrast .bottom{border-top:2px solid #000}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+
+/* VITALINK design system v3 — premium patient experience */
+:root{--navy:#0b2338;--teal:#087f83;--aqua:#4bc8be;--surface:#fff;--ink:#142f42;--muted:#6b8291}
+body{background:radial-gradient(circle at 50% -15%,#bed8e4,#e8f0f5 50%,#f3f6f9)}
+.app{background:linear-gradient(180deg,#edf8f8 0,#f7fafc 410px,#f5f8fb 100%)}
+.top{background:linear-gradient(125deg,#0a243a,#123e58 65%,#145a66);padding-top:26px;padding-bottom:24px;position:relative}
+.top:after{content:"";position:absolute;right:0;bottom:0;width:130px;height:100%;pointer-events:none;background:radial-gradient(circle at 100% 0,#44d6c42b,transparent 70%)}
+.mark{background:linear-gradient(140deg,#ff6d70,#d52f48);box-shadow:0 6px 20px #ef546b44;border:1px solid #ffffff66}
+.brand strong{font-weight:900;letter-spacing:.9px}.brand em{color:#76eee1}
+.test-banner{font-weight:650;letter-spacing:.2px}
+.welcome{padding:36px 25px 20px;position:relative}
+.welcome:before{content:"";display:block;width:38px;height:4px;background:#35b7b0;border-radius:10px;position:absolute;top:20px}
+.welcome h1{font-weight:850;letter-spacing:-1.4px;color:#112f43}
+.welcome>p:last-child{font-size:16px}
+.sos-card{background:linear-gradient(145deg,#fff,#fff9f9 55%,#fff0f1);border:1px solid #f4d9dc;box-shadow:0 14px 35px #74212e10;padding-top:27px;padding-bottom:25px}
+.sos-ring{width:234px;height:234px;background:radial-gradient(circle,#ffdedf 65%,#fff0f0 66%);border:11px solid #fff0f0;box-shadow:0 0 0 1px #f8dbde}
+.sos{width:184px;height:184px;background:linear-gradient(155deg,#ff6873 0,#e44354 48%,#b9253c 100%);box-shadow:0 14px 27px #cd324b60,inset 0 4px 7px #ffffff55,inset 0 -5px 10px #790f2430}
+.sos:focus-visible{outline:5px solid #f2a32a}
+.sos-kicker{letter-spacing:.1px}.sos-note{display:inline-block;background:#fff0f1;padding:8px 12px;border-radius:99px;font-weight:650}
+.quick{gap:13px}
+.service{border:1px solid #e0eaf0;box-shadow:0 7px 22px #173b530c;border-radius:19px;min-height:87px}
+.service:hover,.tiles button:hover{box-shadow:0 12px 27px #153c531b;transform:translateY(-2px)}
+.emoji{background:linear-gradient(145deg,#ddf7f3,#edf8f9);border:1px solid #d1efea}
+.service strong{font-weight:800;letter-spacing:-.25px}
+.section-head h2{font-weight:850;letter-spacing:-.6px}
+.tiles button{box-shadow:0 7px 20px #173b530a;min-height:130px;border-radius:19px}
+.tiles span{display:grid;place-items:center;background:#e9f8f6;border-radius:12px;width:48px;height:48px}
+.bottom{box-shadow:0 -10px 30px #12334b17;border-top:1px solid #dbe8ed}
+.bottom .active{color:#087f83}
+.bottom .active span{background:#e2f7f4;border-radius:11px;min-width:43px}
+.page h1{letter-spacing:-1px;color:#112f43}.digital-card{background:linear-gradient(130deg,#0a253b,#15566a 70%,#1b8a86)}
+@media(min-width:650px){.app{box-shadow:0 18px 70px #13324827}}
