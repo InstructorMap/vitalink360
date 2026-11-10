@@ -23,3 +23,12 @@ header a:hover{background:#183e51}
 .steps span{background:#1b4656;color:#d7f7f3;border:1px solid #2f6d75}
 dialog{background:#102d42;color:#eefaff;border:1px solid #3c6375;box-shadow:0 25px 60px #0008}dialog p{color:#c3dce6}
 @media(max-width:480px){.heading h1{font-size:30px}}
+
+
+/* Uploaded visual assets — root paths verified */
+header{background:linear-gradient(90deg,#071b2cf2,#071b2cdb),url("./brand-banner.webp") center/cover}
+.heading{position:relative;padding:18px 0 22px}
+.map{background:linear-gradient(#071c2d55,#071c2d66),url("./central-operativa.webp") center/cover}
+.map:before{display:none}
+.map-label{background:#071c2de8;backdrop-filter:blur(8px)}
+.panels .panel:nth-child(2) .empty{background:linear-gradient(#102a3cdd,#102a3cdd),url("./ecg-background.webp") center/cover;border-radius:14px}
